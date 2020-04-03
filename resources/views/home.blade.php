@@ -5,16 +5,20 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">User Posts</div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                    @if ( count($posts) > 0)
+                    @foreach ($posts as $post)
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                        <a href="{{route('posts.index')}}/{{$post->id}}">
+                            <h1>{{$post->title}}</h1>
+                            </a>
                         </div>
+                        @endforeach
                     @endif
 
-                    You are logged in!
+                    Here are your Posts.
                 </div>
             </div>
         </div>
